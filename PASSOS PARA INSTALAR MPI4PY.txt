@@ -1,0 +1,54 @@
+
+(PASSO 01)
+LINK PARA BAIXAR PYTHON
+https://www.python.org/downloads/release/python-383/
+
+OBS: COLOQUEI O PYTHON NO PATH
+
+(PASSO 02)
+INSTALAR VISUAL STUDIO 2017 COM O ÚLTIMO SDK PARA WIN10 E C++ DEV TOOLS
+https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=15
+
+(CLICAR EM DESENVOLVIMENTO PYTHON E DESENVOLVIMENTO PARA DESKTOP COM C++)
+INSTALAR DURANTE O DOWNLOAD E INSTALAR
+
+OBS: ESSA É UMA OUTRA INSTALAÇÃO MAIS COMPLETA E OPCIONAL - É MUITO MAIOR E LEVA MAIS TEMPO
+INSTALAR Ferramentas de compilação do Microsoft C++
+https://visualstudio.microsoft.com/pt-br/visual-cpp-build-tools/
+(Clicar  em Ferramentas de build do C++) e instalar
+
+(PASSO 03)
+INSTALAR MPI TOOLS E SDK (EM JUL/2020 É A V.10)
+https://www.microsoft.com/en-us/download/details.aspx?id=57467
+
+
+BAIXAR OS DOIS ARQUIVOS  msmpisdk.msi E MSMpiSetup.exe - EXECUTAR OS DOIS ARQUIVOS
+
+(PASSO 04)
+ADICIONAR OS CAMINHOS(PASTAS) ABAIXO NO PATH (VARIÁVEIS DE AMBIENTE)
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64
+C:\Program Files (x86)\Microsoft SDKs\MPI\
+C:\Program Files\Microsoft MPI\bin
+
+
+OBS: COMO INSTALEI O MSVC 2017, O PRIMEIRO CAMINHO É ONDE ESTÁ O COMPILADOR MSVC PARA 64 BITS. SÓ
+TOME CUIDADO PARA FICAR NESSA ORDEM NO PATH, ADICIONADO NO FINAL
+
+(PASSO 05)
+INSTALAR MPI4PY NO CMD
+pip install mpi4py
+
+
+(PASSO 06)
+CÓDIGO DE TESTE (teste01.py)
+
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+print ("hello world from process ", rank)
+
+EXECUTANDO O CÓDIGO COM 3 PROCESSOS (-np 3)
+mpiexec -np 3 python teste01.py
+
+
